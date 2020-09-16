@@ -2,20 +2,16 @@
   <v-form @submit="checkForm">
     <v-container>
       <v-col>
-        <v-text-field
-          v-model="firstName"
-          :rules="firstNameRules"
-          label="First name"
-        ></v-text-field>
+        <v-text-field v-model="firstName" label="First name"></v-text-field>
+        <p v-if="firstNameError">{{ firstNameError }}</p>
       </v-col>
-
       <v-col>
         <v-text-field
           :disabled="isDisabledLastName"
-          :rules="lastNameRules"
           v-model="lastName"
           label="Last name"
         ></v-text-field>
+        <p v-if="lastNameError">{{ lastNameError }}</p>
       </v-col>
 
       <v-col>
@@ -23,9 +19,13 @@
           v-model="bio"
           :disabled="isDisabledShortBio"
           :counter="140"
-          :rules="bioRules"
           label="Short-bio"
         ></v-text-field>
+        <div v-if="bioErrors.length">
+          <p v-bind:key="error" v-for="error in bioErrors">
+            {{ error }}
+          </p>
+        </div>
       </v-col>
       <v-btn class="mr-4" type="submit">submit</v-btn>
     </v-container>
@@ -40,14 +40,9 @@ export default {
     firstName: "",
     lastName: "",
     bio: "",
-    bioRules: [
-      (bio) => bio.length <= 140 || "Exceeded character limit",
-      (bio) => !!bio || " Bio cannot be empty",
-    ],
-    firstNameRules: [
-      (firstName) => !!firstName || " First Name cannot be empty",
-    ],
-    lastNameRules: [(lastName) => !!lastName || " Last Name cannot be empty"],
+    firstNameError: "",
+    lastNameError: "",
+    bioErrors: [],
   }),
   methods: {
     checkForm(e) {
@@ -57,7 +52,24 @@ export default {
         this.bio &&
         this.bio.length <= 140
       ) {
-        return true;
+        this.$router.push("profile");
+      } else {
+        this.firstNameError = "";
+        this.lastNameError = "";
+        this.bioErrors = [];
+
+        if (!this.firstName) {
+          this.firstNameError = "First Name cannot be empty";
+        }
+        if (!this.lastName) {
+          this.lastNameError = "Last Name cannot be empty";
+        }
+        if (!this.bio) {
+          this.bioErrors.push("Bio cannot be empty");
+        }
+        if (this.bio.length > 140) {
+          this.bioErrors.push("Bio character count exceeded");
+        }
       }
       e.preventDefault();
     },
