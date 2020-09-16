@@ -1,20 +1,20 @@
 <template>
-  <v-form>
+  <v-form @submit="checkForm">
     <v-container>
       <v-col>
         <v-text-field
           v-model="firstName"
+          :rules="firstNameRules"
           label="First name"
-          required
         ></v-text-field>
       </v-col>
 
       <v-col>
         <v-text-field
           :disabled="isDisabledLastName"
+          :rules="lastNameRules"
           v-model="lastName"
           label="Last name"
-          required
         ></v-text-field>
       </v-col>
 
@@ -25,11 +25,9 @@
           :counter="140"
           :rules="bioRules"
           label="Short-bio"
-          required
         ></v-text-field>
       </v-col>
-
-      <!-- <v-btn class="mr-4" @click="submit">submit</v-btn> -->
+      <v-btn class="mr-4" type="submit">submit</v-btn>
     </v-container>
   </v-form>
 </template>
@@ -38,11 +36,32 @@
 export default {
   name: "ProfileCreationForm",
   data: () => ({
+    errors: [],
     firstName: "",
     lastName: "",
     bio: "",
-    bioRules: [(bio) => bio.length <= 140 || "Exceeded character limit"],
+    bioRules: [
+      (bio) => bio.length <= 140 || "Exceeded character limit",
+      (bio) => !!bio || " Bio cannot be empty",
+    ],
+    firstNameRules: [
+      (firstName) => !!firstName || " First Name cannot be empty",
+    ],
+    lastNameRules: [(lastName) => !!lastName || " Last Name cannot be empty"],
   }),
+  methods: {
+    checkForm(e) {
+      if (
+        this.firstName &&
+        this.lastName &&
+        this.bio &&
+        this.bio.length <= 140
+      ) {
+        return true;
+      }
+      e.preventDefault();
+    },
+  },
   computed: {
     isDisabledLastName() {
       return this.firstName === "";
