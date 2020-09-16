@@ -27,7 +27,9 @@
           </p>
         </div>
       </v-col>
-      <v-btn class="mr-4" type="submit">submit</v-btn>
+      <v-col>
+        <v-btn class="mr-4" type="submit">submit</v-btn>
+      </v-col>
     </v-container>
   </v-form>
 </template>
@@ -36,7 +38,6 @@
 export default {
   name: "ProfileCreationForm",
   data: () => ({
-    errors: [],
     firstName: "",
     lastName: "",
     bio: "",
@@ -46,18 +47,18 @@ export default {
   }),
   methods: {
     checkForm(e) {
+      this.firstNameError = "";
+      this.lastNameError = "";
+      this.bioErrors = [];
+
       if (
         this.firstName &&
         this.lastName &&
         this.bio &&
         this.bio.length <= 140
       ) {
-        this.$router.push("movies");
+        this.$router.push("movie");
       } else {
-        this.firstNameError = "";
-        this.lastNameError = "";
-        this.bioErrors = [];
-
         if (!this.firstName) {
           this.firstNameError = "First Name cannot be empty";
         }
