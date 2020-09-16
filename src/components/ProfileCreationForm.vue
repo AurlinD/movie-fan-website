@@ -52,7 +52,7 @@ export default {
         this.bio &&
         this.bio.length <= 140
       ) {
-        this.$router.push("profile");
+        this.$router.push("movies");
       } else {
         this.firstNameError = "";
         this.lastNameError = "";
