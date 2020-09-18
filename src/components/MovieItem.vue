@@ -1,13 +1,14 @@
 <template>
-  <div>
-    MovieItem
-
-    <div class="container"></div>
-    <h2>{{ movie.title }}</h2>
-    <p>{{ movie.releaseDate }}</p>
-    <p>{{ movie.userScore }}</p>
-    <p>{{ movie.overview }}</p>
-  </div>
+  <v-card class="mx-auto" max-width="344" outlined>
+    <v-list-item three-line>
+      <v-list-item-content>
+        <v-list-item-title class="headline mb-1">{{movie.title}}</v-list-item-title>
+        <v-list-item-subtitle>Release Date: {{movie.releaseDate}}</v-list-item-subtitle>
+        <v-list-item-subtitle>Score: {{movie.userScore}}</v-list-item-subtitle>
+        <v-list-item-text>{{movie.overview}}</v-list-item-text>
+      </v-list-item-content>
+    </v-list-item>
+  </v-card>
 </template>
 
 <script>
@@ -18,8 +19,9 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.mx_auto {
   display: flex;
   flex-direction: row;
+  margin: 1em;
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    Movie
     <AddMovie v-on:add-movie="addMovie" />
     <Movies v-bind:movies="movies" />
   </div>

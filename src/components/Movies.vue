@@ -1,6 +1,5 @@
 <template>
   <div>
-    Movies
     <div v-bind:key="movie" v-for="movie in movies">
       <MovieItem v-bind:movie="movie" />
     </div>

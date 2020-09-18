@@ -1,6 +1,5 @@
 <template>
   <div>
-    Profile
     <ProfileCreationForm />
   </div>
 </template>
