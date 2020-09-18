@@ -48,9 +48,16 @@ export default {
           `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.movieTitle}`
         )
         .then((res) => {
-          // this.result = [...this.result, res.data];
           if (res.data.total_results === 0) {
             this.movieTitleErrors.push("Can’t find that Movie");
+          } else {
+            const movie = {
+              title: res.data.results[0].title,
+              releaseDate: res.data.results[0].release_date,
+              userScore: res.data.results[0].vote_average,
+              overview: res.data.results[0].overview,
+            };
+            this.$emit("add-movie", movie);
           }
         })
         .catch((err) => console.log(err));

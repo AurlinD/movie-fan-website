@@ -1,8 +1,9 @@
 <template>
   <div>
     Movie
-    <AddMovie />
+    <AddMovie v-on:add-movie="addMovie" />
     <Movies />
+    {{ this.movies }}
   </div>
 </template>
 
@@ -14,6 +15,17 @@ export default {
   components: {
     AddMovie,
     Movies,
+  },
+  data() {
+    return {
+      movies: [],
+    };
+  },
+
+  methods: {
+    addMovie(movie) {
+      this.movies = [...this.movies, movie];
+    },
   },
 };
 </script>
