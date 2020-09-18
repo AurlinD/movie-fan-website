@@ -2,8 +2,7 @@
   <div>
     Movie
     <AddMovie v-on:add-movie="addMovie" />
-    <Movies />
-    {{ this.movies }}
+    <Movies v-bind:movies="movies" />
   </div>
 </template>
 
