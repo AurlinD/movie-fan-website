@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-form @submit="checkIfEmpty">
+    <v-form @submit="checkIfEmptySearchbar">
       <v-container>
         <v-col>
           <v-text-field
@@ -16,7 +16,6 @@
         <v-col>
           <v-btn class="mr-4" type="submit">Search Movie</v-btn>
         </v-col>
-        {{ result }}
       </v-container>
     </v-form>
   </div>
@@ -30,27 +29,26 @@ export default {
   data: () => ({
     movieTitle: "",
     movieTitleErrors: [],
-    result: [],
   }),
   methods: {
-    checkIfEmpty(e) {
+    checkIfEmptySearchbar(e) {
       this.movieTitleErrors = [];
 
       if (this.movieTitle) {
-        this.addMovie();
+        this.checkValidation();
       } else {
         this.movieTitleErrors.push("Movie Title cannot be empty");
       }
       e.preventDefault();
     },
-    addMovie() {
+    checkValidation() {
       const API_KEY = "ea9385095138c0c18e3aca7590507b54";
       axios
         .get(
           `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${this.movieTitle}`
         )
         .then((res) => {
-          this.result = [...this.result, res.data];
+          // this.result = [...this.result, res.data];
           if (res.data.total_results === 0) {
             this.movieTitleErrors.push("Can’t find that Movie");
           }
