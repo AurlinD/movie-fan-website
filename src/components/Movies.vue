@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div v-bind:key="movie" v-for="movie in movies">
       <MovieItem v-bind:movie="movie" />
     </div>
@@ -15,4 +15,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+}
+</style>

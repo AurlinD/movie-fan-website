@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="movie-container">
     <AddMovie v-on:add-movie="addMovie" />
     <Movies v-bind:movies="movies" />
   </div>
@@ -28,4 +28,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+</style>

@@ -1,16 +1,11 @@
 <template>
-  <div>
+  <div class="add-movie-container">
     <v-form @submit="checkIfEmptySearchbar">
       <v-container>
         <v-col>
-          <v-text-field
-            v-model="movieTitle"
-            label="Enter Movie Title"
-          ></v-text-field>
+          <v-text-field v-model="movieTitle" label="Enter Movie Title"></v-text-field>
           <div v-if="movieTitleErrors.length">
-            <p v-bind:key="error" v-for="error in movieTitleErrors">
-              {{ error }}
-            </p>
+            <p v-bind:key="error" v-for="error in movieTitleErrors">{{ error }}</p>
           </div>
         </v-col>
         <v-col>
@@ -66,4 +61,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+}
+<style scoped>
+.add-movie-container {
+  width: 100%;
+}
+</style>

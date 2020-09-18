@@ -19,9 +19,4 @@ export default {
 </script>
 
 <style scoped>
-.mx_auto {
-  display: flex;
-  flex-direction: row;
-  margin: 1em;
-}
 </style>
