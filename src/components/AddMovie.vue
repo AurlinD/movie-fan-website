@@ -46,12 +46,6 @@ export default {
           if (res.data.total_results === 0) {
             this.movieTitleErrors.push("Can’t find that Movie");
           } else {
-            // const movie = {
-            //   title: res.data.results[0].title,
-            //   releaseDate: res.data.results[0].release_date,
-            //   userScore: res.data.results[0].vote_average,
-            //   overview: res.data.results[0].overview,
-            // };
             const queriedMovies = res.data.results.filter(
               (movie, index) => index < 10
             );

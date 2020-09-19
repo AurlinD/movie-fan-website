@@ -13,7 +13,7 @@ import AddMovie from "../components/AddMovie";
 import Movies from "../components/Movies";
 
 export default {
-  name: "Movie",
+  name: "MoviePage",
   components: {
     AddMovie,
     Movies,
@@ -43,7 +43,6 @@ export default {
         movieArray.push(infoMovie);
       }
       this.searchedMovies = movieArray;
-      console.log(this.searchedMovies);
     },
 
     addMovie(id) {
