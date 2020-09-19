@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="title" v-if="flag === 'true'">
-      Favorited Movies
+      Favorited movies
       <hr />
     </div>
     <div class="title" v-else>
-      Choose your favourite movie
+      Searched movies, choose your favourite movie
       <hr />
     </div>
 

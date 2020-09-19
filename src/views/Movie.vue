@@ -1,9 +1,9 @@
 <template>
   <div class="movie-container">
-    <AddMovie v-on:add-movie="addMovie" />
+    <AddMovie v-on:add-movie="queriedMovies" />
     <div v-if="favouritedMovies.length < 3">{{underRequiredAmountError}}</div>
     <div v-if="favouritedMovies.length === 15">{{overRequiredAmountError}}</div>
-    <Movies v-bind:movies="favouritedMovies" v-on:function-movie="deleteMovie" flag="false" />
+    <Movies v-bind:movies="searchedMovies" v-on:function-movie="addMovie" flag="false" />
     <Movies v-bind:movies="favouritedMovies" v-on:function-movie="deleteMovie" flag="true" />
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      browseMovies: [],
+      searchedMovies: [],
       favouritedMovies: [],
       underRequiredAmountError:
         "Please add more movies. Currently under the required amount of 3",
@@ -30,22 +30,25 @@ export default {
   },
 
   methods: {
-    browseMovie(moviesAPI) {
-      for (let movie of moviesAPI) {
+    queriedMovies(movies) {
+      const movieArray = [];
+
+      for (let movie of movies) {
         const infoMovie = {
           title: movie.title,
           releaseDate: movie.release_date,
           userScore: movie.vote_average,
           overview: movie.overview,
         };
-        this.browseMovies = [...this.browseMovies, infoMovie];
+        movieArray.push(infoMovie);
       }
-      console.log(this.browseMovies);
+      this.searchedMovies = movieArray;
+      console.log(this.searchedMovies);
     },
 
     addMovie(movie) {
       if (this.favouritedMovies.length < 15) {
-        this.browseMovies = [];
+        this.searchedMovies = [];
         this.favouritedMovies = [...this.favouritedMovies, movie];
       }
     },
