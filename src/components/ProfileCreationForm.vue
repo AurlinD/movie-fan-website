@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit="checkForm">
+  <v-form class="profile-container" @submit="checkForm">
     <v-container>
       <v-col>
         <v-text-field v-model="firstName" label="First name"></v-text-field>
@@ -76,6 +76,9 @@ export default {
 </script>
 
 <style scoped>
+.profile-container {
+  font-family: sans-serif;
+}
 .error {
   color: red;
 }

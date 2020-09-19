@@ -3,13 +3,13 @@
     <v-form @submit="checkIfEmptySearchbar">
       <v-container>
         <v-col>
-          <v-text-field v-model="movieTitle" label="Enter Movie Title"></v-text-field>
+          <v-text-field v-model="movieTitle" label="Enter Movie Title Keyword"></v-text-field>
           <div class="error" v-if="movieTitleErrors.length">
             <p v-bind:key="error" v-for="error in movieTitleErrors">{{ error }}</p>
           </div>
         </v-col>
         <v-col>
-          <v-btn class="mr-4" type="submit">Search Movie</v-btn>
+          <v-btn class="mr-4" type="submit">Search Movie(s)</v-btn>
         </v-col>
       </v-container>
     </v-form>
@@ -67,9 +67,25 @@ export default {
 }
 <style scoped>
 .add-movie-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
 .error {
   color: red;
+}
+
+.v-btn {
+  width: 100%;
+}
+
+.v-form {
+  width: 100%;
+}
+
+.v-form label {
+  text-align: center;
 }
 </style>
