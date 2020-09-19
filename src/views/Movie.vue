@@ -1,7 +1,7 @@
 <template>
   <div class="movie-container">
     <AddMovie v-on:add-movie="addMovie" />
-    <Movies v-bind:movies="movies" />
+    <Movies v-bind:movies="movies" v-on:del-movie="deleteMovie" />
   </div>
 </template>
 
@@ -23,6 +23,9 @@ export default {
   methods: {
     addMovie(movie) {
       this.movies = [...this.movies, movie];
+    },
+    deleteMovie(id) {
+      this.movies = this.movies.filter((movie, index) => id !== index);
     },
   },
 };

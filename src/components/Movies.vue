@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div v-bind:key="movie" v-for="movie in movies">
-      <MovieItem v-bind:movie="movie" />
+    <div v-bind:key="i" v-for="(movie, i) in movies">
+      <MovieItem v-bind:movie="movie" v-on:del-movie="$emit('del-movie', i)" />
     </div>
   </div>
 </template>
