@@ -3,7 +3,7 @@
     <v-list-item three-line>
       <v-list-item-content>
         <v-list-item-title class="headline mb-1">{{movie.title}}</v-list-item-title>
-        <v-list-item-subtitle>'Release Date: {{movie.releaseDate}}</v-list-item-subtitle>
+        <v-list-item-subtitle>Release Date: {{movie.releaseDate}}</v-list-item-subtitle>
         <v-list-item-subtitle>Score: {{movie.userScore}}</v-list-item-subtitle>
         <v-list-item-text>{{movie.overview}}</v-list-item-text>
       </v-list-item-content>
@@ -25,7 +25,7 @@ export default {
 
 <style scoped>
 .mx-auto {
-  margin: 1em;
+  margin: 0.5em;
 }
 
 .green {

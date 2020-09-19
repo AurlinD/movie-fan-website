@@ -6,25 +6,14 @@
         <p v-if="firstNameError">{{ firstNameError }}</p>
       </v-col>
       <v-col>
-        <v-text-field
-          :disabled="isDisabledLastName"
-          v-model="lastName"
-          label="Last name"
-        ></v-text-field>
+        <v-text-field :disabled="isDisabledLastName" v-model="lastName" label="Last name"></v-text-field>
         <p v-if="lastNameError">{{ lastNameError }}</p>
       </v-col>
 
       <v-col>
-        <v-text-field
-          v-model="bio"
-          :disabled="isDisabledShortBio"
-          :counter="140"
-          label="Short-bio"
-        ></v-text-field>
+        <v-text-field v-model="bio" :disabled="isDisabledShortBio" :counter="500" label="Short-bio"></v-text-field>
         <div v-if="bioErrors.length">
-          <p v-bind:key="error" v-for="error in bioErrors">
-            {{ error }}
-          </p>
+          <p v-bind:key="error" v-for="error in bioErrors">{{ error }}</p>
         </div>
       </v-col>
       <v-col>
@@ -55,7 +44,7 @@ export default {
         this.firstName &&
         this.lastName &&
         this.bio &&
-        this.bio.length <= 140
+        this.bio.length <= 500
       ) {
         this.$router.push("movie");
       } else {
@@ -68,7 +57,7 @@ export default {
         if (!this.bio) {
           this.bioErrors.push("Bio cannot be empty");
         }
-        if (this.bio.length > 140) {
+        if (this.bio.length > 500) {
           this.bioErrors.push("Bio character count exceeded");
         }
       }
