@@ -46,10 +46,13 @@ export default {
       console.log(this.searchedMovies);
     },
 
-    addMovie(movie) {
+    addMovie(id) {
       if (this.favouritedMovies.length < 15) {
+        this.favouritedMovies = [
+          ...this.favouritedMovies,
+          this.searchedMovies[id],
+        ];
         this.searchedMovies = [];
-        this.favouritedMovies = [...this.favouritedMovies, movie];
       }
     },
     deleteMovie(id) {
