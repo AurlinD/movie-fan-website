@@ -1,10 +1,10 @@
 <template>
   <div class="movie-container">
-    <AddMovie v-on:browse-movie="browseMovie" />
-    <div v-if="movies.length < 3">{{underRequiredAmountError}}</div>
-    <div v-if="movies.length === 15">{{overRequiredAmountError}}</div>
+    <AddMovie v-on:add-movie="addMovie" />
+    <div v-if="favouritedMovies.length < 3">{{underRequiredAmountError}}</div>
+    <div v-if="favouritedMovies.length === 15">{{overRequiredAmountError}}</div>
 
-    <Movies v-bind:movies="movies" v-on:del-movie="deleteMovie" />
+    <Movies v-bind:movies="favouritedMovies" v-on:del-movie="deleteMovie" />
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       browseMovies: [],
-      movies: [],
+      favouritedMovies: [],
       underRequiredAmountError:
         "Please add more movies. Currently under the required amount of 3",
       overRequiredAmountError:
@@ -44,13 +44,15 @@ export default {
     },
 
     addMovie(movie) {
-      if (this.movies.length < 15) {
+      if (this.favouritedMovies.length < 15) {
         this.browseMovies = [];
-        this.movies = [...this.movies, movie];
+        this.favouritedMovies = [...this.favouritedMovies, movie];
       }
     },
     deleteMovie(id) {
-      this.movies = this.movies.filter((movie, index) => id !== index);
+      this.favouritedMovies = this.favouritedMovies.filter(
+        (movie, index) => id !== index
+      );
     },
   },
 };
