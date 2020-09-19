@@ -5,7 +5,7 @@
       <hr />
     </div>
     <div class="title" v-else>
-      Searched movies, choose your favourite movie
+      Searched movies, add your favourite movie
       <hr />
     </div>
 

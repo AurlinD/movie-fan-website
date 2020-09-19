@@ -1,10 +1,22 @@
 <template>
   <div class="movie-container">
     <AddMovie v-on:add-movie="queriedMovies" />
-    <div class="error" v-if="favouritedMovies.length < 3">{{underRequiredAmountError}}</div>
-    <div class="error" v-if="favouritedMovies.length === 15">{{overRequiredAmountError}}</div>
-    <Movies v-bind:movies="searchedMovies" v-on:function-movie="addMovie" flag="false" />
-    <Movies v-bind:movies="favouritedMovies" v-on:function-movie="deleteMovie" flag="true" />
+    <div class="error" v-if="favouritedMovies.length < 3">
+      {{ underRequiredAmountError }}
+    </div>
+    <div class="error" v-if="favouritedMovies.length === 15">
+      {{ overRequiredAmountError }}
+    </div>
+    <Movies
+      v-bind:movies="searchedMovies"
+      v-on:function-movie="addMovie"
+      flag="false"
+    />
+    <Movies
+      v-bind:movies="favouritedMovies"
+      v-on:function-movie="deleteMovie"
+      flag="true"
+    />
   </div>
 </template>
 
@@ -23,9 +35,9 @@ export default {
       searchedMovies: [],
       favouritedMovies: [],
       underRequiredAmountError:
-        "Please add more movies. Currently under the required amount of 3",
+        "Please add more movies. Currently under the required amount of 3 favourited movies",
       overRequiredAmountError:
-        "Please delete some movies if you wish to add more movies. Currently at max limit of 15",
+        "Please delete some movies if you wish to add more movies. Currently at max limit of 15 favourited movies",
     };
   },
 
