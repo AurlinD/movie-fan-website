@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto" v-bind:class="[color ? 'green' : 'red']" max-width="344" outlined>
-    <v-list-item four-line>
+    <v-list-item three-line>
       <v-list-item-content>
         <div class="top-line">
           <v-list-item-title class="headline mb-1">{{movie.title}}</v-list-item-title>

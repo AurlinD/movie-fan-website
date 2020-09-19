@@ -1,8 +1,9 @@
 <template>
   <div class="movie-container">
-    <AddMovie v-on:add-movie="addMovie" />
+    <AddMovie v-on:browse-movie="browseMovie" />
     <div v-if="movies.length < 3">{{underRequiredAmountError}}</div>
     <div v-if="movies.length === 15">{{overRequiredAmountError}}</div>
+
     <Movies v-bind:movies="movies" v-on:del-movie="deleteMovie" />
   </div>
 </template>
@@ -10,6 +11,7 @@
 <script>
 import AddMovie from "../components/AddMovie";
 import Movies from "../components/Movies";
+
 export default {
   name: "Movie",
   components: {
@@ -18,6 +20,7 @@ export default {
   },
   data() {
     return {
+      browseMovies: [],
       movies: [],
       underRequiredAmountError:
         "Please add more movies. Currently under the required amount of 3",
@@ -27,8 +30,22 @@ export default {
   },
 
   methods: {
+    browseMovie(moviesAPI) {
+      for (let movie of moviesAPI) {
+        const infoMovie = {
+          title: movie.title,
+          releaseDate: movie.release_date,
+          userScore: movie.vote_average,
+          overview: movie.overview,
+        };
+        this.browseMovies = [...this.browseMovies, infoMovie];
+      }
+      console.log(this.browseMovies);
+    },
+
     addMovie(movie) {
       if (this.movies.length < 15) {
+        this.browseMovies = [];
         this.movies = [...this.movies, movie];
       }
     },
