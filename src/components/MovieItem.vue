@@ -42,5 +42,6 @@ export default {
 .top-line {
   display: flex;
   justify-content: space-between;
+  overflow: hidden;
 }
 </style>

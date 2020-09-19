@@ -1,8 +1,8 @@
 <template>
   <div class="movie-container">
     <AddMovie v-on:add-movie="queriedMovies" />
-    <div v-if="favouritedMovies.length < 3">{{underRequiredAmountError}}</div>
-    <div v-if="favouritedMovies.length === 15">{{overRequiredAmountError}}</div>
+    <div class="error" v-if="favouritedMovies.length < 3">{{underRequiredAmountError}}</div>
+    <div class="error" v-if="favouritedMovies.length === 15">{{overRequiredAmountError}}</div>
     <Movies v-bind:movies="searchedMovies" v-on:function-movie="addMovie" flag="false" />
     <Movies v-bind:movies="favouritedMovies" v-on:function-movie="deleteMovie" flag="true" />
   </div>
@@ -71,5 +71,9 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.error {
+  color: red;
 }
 </style>

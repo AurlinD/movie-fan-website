@@ -4,7 +4,7 @@
       <v-container>
         <v-col>
           <v-text-field v-model="movieTitle" label="Enter Movie Title"></v-text-field>
-          <div v-if="movieTitleErrors.length">
+          <div class="error" v-if="movieTitleErrors.length">
             <p v-bind:key="error" v-for="error in movieTitleErrors">{{ error }}</p>
           </div>
         </v-col>
@@ -68,5 +68,8 @@ export default {
 <style scoped>
 .add-movie-container {
   width: 100%;
+}
+.error {
+  color: red;
 }
 </style>

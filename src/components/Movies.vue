@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="title" v-if="flag === 'true'">
-      Favorited movies
+      Favourited movies
       <hr />
     </div>
     <div class="title" v-else>

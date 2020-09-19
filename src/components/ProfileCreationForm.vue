@@ -3,16 +3,16 @@
     <v-container>
       <v-col>
         <v-text-field v-model="firstName" label="First name"></v-text-field>
-        <p v-if="firstNameError">{{ firstNameError }}</p>
+        <p class="error" v-if="firstNameError">{{ firstNameError }}</p>
       </v-col>
       <v-col>
         <v-text-field :disabled="isDisabledLastName" v-model="lastName" label="Last name"></v-text-field>
-        <p v-if="lastNameError">{{ lastNameError }}</p>
+        <p class="error" v-if="lastNameError">{{ lastNameError }}</p>
       </v-col>
 
       <v-col>
         <v-text-field v-model="bio" :disabled="isDisabledShortBio" :counter="500" label="Short-bio"></v-text-field>
-        <div v-if="bioErrors.length">
+        <div class="error" v-if="bioErrors.length">
           <p v-bind:key="error" v-for="error in bioErrors">{{ error }}</p>
         </div>
       </v-col>
@@ -75,4 +75,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.error {
+  color: red;
+}
+</style>
