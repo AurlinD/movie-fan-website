@@ -3,8 +3,8 @@
     <AddMovie v-on:add-movie="addMovie" />
     <div v-if="favouritedMovies.length < 3">{{underRequiredAmountError}}</div>
     <div v-if="favouritedMovies.length === 15">{{overRequiredAmountError}}</div>
-
-    <Movies v-bind:movies="favouritedMovies" v-on:del-movie="deleteMovie" />
+    <Movies v-bind:movies="favouritedMovies" v-on:function-movie="deleteMovie" flag="false" />
+    <Movies v-bind:movies="favouritedMovies" v-on:function-movie="deleteMovie" flag="true" />
   </div>
 </template>
 

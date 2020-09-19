@@ -4,7 +4,8 @@
       <v-list-item-content>
         <div class="top-line">
           <v-list-item-title class="headline mb-1">{{movie.title}}</v-list-item-title>
-          <v-btn @click="$emit('del-movie')" small class="ma-2">Delete</v-btn>
+          <v-btn v-if="flag === 'true'" @click="$emit('function-movie')" small class="ma-2">Delete</v-btn>
+          <v-btn v-else @click="$emit('function-movie')" small class="ma-2">Add</v-btn>
         </div>
         <v-list-item-subtitle>Release Date: {{movie.releaseDate}}</v-list-item-subtitle>
         <v-list-item-subtitle>Score: {{movie.userScore}}</v-list-item-subtitle>
@@ -17,7 +18,7 @@
 <script>
 export default {
   name: "MovieItem",
-  props: ["movie"],
+  props: ["movie", "flag"],
   computed: {
     color() {
       return this.movie.userScore >= 8;

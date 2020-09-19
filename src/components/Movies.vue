@@ -1,7 +1,22 @@
 <template>
   <div class="container">
-    <div v-bind:key="i" v-for="(movie, i) in movies">
-      <MovieItem v-bind:movie="movie" v-on:del-movie="$emit('del-movie', i)" />
+    <div class="title" v-if="flag === 'true'">
+      Favorited Movies
+      <hr />
+    </div>
+    <div class="title" v-else>
+      Choose your favourite movie
+      <hr />
+    </div>
+
+    <div class="movies">
+      <div v-bind:key="i" v-for="(movie, i) in movies">
+        <MovieItem
+          v-bind:movie="movie"
+          v-on:function-movie="$emit('function-movie', i)"
+          :flag="flag"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -11,17 +26,30 @@ import MovieItem from "./MovieItem";
 export default {
   name: "Movies",
   components: { MovieItem },
-  props: ["movies"],
+  props: ["movies", "flag"],
 };
 </script>
 
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 8px;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+}
+
+.movies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 </style>
