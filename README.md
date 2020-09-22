@@ -2,6 +2,8 @@
 
 # Project overview
 
+View the website here! https://aurlind.github.io/movie-fan-website/#/movie
+
 This application has an user sign up page and a movies page where an user can create there favourited movie list by searching for a movie using the https://api.themoviedb.org/ database.
 
 Some assumptions I made when looking at the requirements:
@@ -13,6 +15,12 @@ Assumed requirement 7a) means that the favourited movie list cannot be less than
 Final Thoughts:
 
 This was my first project I created with Vue and had a blast learning it on the fly. My experience with React was really helpful when creating this app as Vue and React are similar. If I had more time to dedicate towards this, I would have looked into having users see a movie image/poster when viewing the information regarding a movie as just looking at plain text can get boring.
+
+## Final Product
+
+!["Start"](docs/signup.png)
+!["FavouriteMovies"](docs/favourite.png)
+
 
 ## Project setup
 
